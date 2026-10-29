@@ -13,7 +13,7 @@ mkdir -p "$OUT/classes" "$OUT/generated" "$OUT/dex"
 "$BT/aapt2" compile --dir app/src/main/res -o "$OUT/resources.zip"
 sed 's/<manifest /<manifest package="cn.local.quickrecorder" /' app/src/main/AndroidManifest.xml > "$OUT/AndroidManifest.xml"
 "$BT/aapt2" link -o "$OUT/unsigned.apk" -I "$ANDROID" --manifest "$OUT/AndroidManifest.xml" \
-    --min-sdk-version 29 --target-sdk-version 36 --version-code 3 --version-name 0.3-test \
+    --min-sdk-version 29 --target-sdk-version 36 --version-code 4 --version-name 0.4-test \
     --java "$OUT/generated" "$OUT/resources.zip"
 find app/src/main/java "$OUT/generated" -name '*.java' | sort > "$OUT/sources.txt"
 javac -encoding UTF-8 -source 17 -target 17 -classpath "$ANDROID" -d "$OUT/classes" @"$OUT/sources.txt"
@@ -30,7 +30,7 @@ if [ ! -f "$KEYDIR/test.jks" ]; then
       -keyalg RSA -keysize 2048 -validity 3650 >/dev/null 2>&1
 fi
 "$BT/apksigner" sign --ks "$KEYDIR/test.jks" --ks-pass pass:android --ks-key-alias androiddebugkey \
-    --out "$OUT/QuickRecorder-0.3-test.apk" "$OUT/aligned.apk"
-"$BT/apksigner" verify --verbose --print-certs "$OUT/QuickRecorder-0.3-test.apk"
-"$BT/zipalign" -c -v 4 "$OUT/QuickRecorder-0.3-test.apk"
-sha256sum "$OUT/QuickRecorder-0.3-test.apk"
+    --out "$OUT/QuickRecorder-0.4-test.apk" "$OUT/aligned.apk"
+"$BT/apksigner" verify --verbose --print-certs "$OUT/QuickRecorder-0.4-test.apk"
+"$BT/zipalign" -c -v 4 "$OUT/QuickRecorder-0.4-test.apk"
+sha256sum "$OUT/QuickRecorder-0.4-test.apk"

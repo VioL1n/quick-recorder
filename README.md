@@ -2,7 +2,13 @@
 
 简洁的本地 Android 录音工具。锁屏或熄屏时，双击音量下键开始录音，再次双击停止保存。也可以在应用首页手动录音。
 
-**当前版本：0.3-test · Android 10+ · targetSdk 36**
+**当前版本：0.4-test · Android 10+ · targetSdk 36**
+
+## 0.4 图标更新
+
+深海蓝底、白色三段声波和两点冰蓝标记，支持自适应图标及 Android 13+ 单色主题图标。通知仍使用独立单色小图标。本次不改变录音行为；同签名版本可覆盖升级。
+
+图标矢量母版与1024px预览位于 `branding/`。预览采用圆角方形遮罩，实际桌面轮廓由启动器决定。
 
 ## 功能
 
@@ -47,7 +53,7 @@ export ANDROID_HOME=/path/to/android-sdk
 ./build-local.sh
 ```
 
-输出 `build-local/QuickRecorder-0.3-test.apk`。脚本使用 aapt2、javac、D8、zipalign 和 apksigner，并校验签名与对齐。
+输出 `build-local/QuickRecorder-0.4-test.apk`。脚本使用 aapt2、javac、D8、zipalign 和 apksigner，并校验签名与对齐。
 
 首次构建会在 `.test-signing/` 创建本机测试签名密钥。**不要提交或分享签名私钥。** 不同机器生成的密钥不同，因此不能直接覆盖另一签名安装的应用。维护者应安全保管原签名密钥；正式发布不应使用临时测试签名策略。
 
@@ -70,9 +76,10 @@ mkdir -p build-tests
 python3 tests/static_checks.py
 python3 tests/ui_checks.py
 python3 tests/screen_off_checks.py
+python3 tests/icon_checks.py
 ```
 
-包含手势时序测试、权限/数据安全静态断言、配色对比度断言，以及不主动点亮屏幕路径的静态检查。本轮未执行手机或模拟器上的0.3运行测试；这类检查不能替代真实机型的录音/声音/锁屏测试。
+包含手势时序测试、权限/数据安全静态断言、配色对比度断言，以及不主动点亮屏幕路径的静态检查。本轮未执行手机或模拟器上的0.4运行测试；这类检查不能替代真实机型的录音/声音/锁屏测试。
 
 ## 许可
 

@@ -19,5 +19,5 @@ recorder = (java / 'RecorderService.java').read_text()
 assert 'new Intent(this,MainActivity.class)' in recorder
 launcher = (java / 'MainActivity.java').read_text()
 assert 'RecorderService.requestStart(this)' in launcher
-assert 'versionCode 3' in (base / 'app/build.gradle').read_text()
+assert 'versionCode 4' in (base / 'app/build.gradle').read_text()
 print('PASS: no wake-screen Activity/API/branch; legacy preference only removed; direct shortcut and manual recording retained')

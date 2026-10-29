@@ -115,7 +115,7 @@ public final class MainActivity extends Activity {
         LinearLayout privacy=section("只在本机","无联网权限 · 无云同步 · 无账号");
         ui.add(privacy,ui.label("录音保存在应用私有目录，只有你选择导出时才交给接收应用。卸载或清除数据会删除全部录音，请先导出重要内容。",13,ui.muted,false),14);
         ui.add(privacy,ui.button("诊断与帮助  ›",false,() -> show("diagnostics")),16);
-        ui.add(root,ui.centered("快捷录音  0.3 · 测试版",12,ui.muted,false),26);
+        ui.add(root,ui.centered("快捷录音  0.4 · 测试版",12,ui.muted,false),26);
     }
     private void styleSwitch(Switch s) { s.setTextSize(15);s.setTextColor(ui.text);s.setMinHeight(ui.dp(52));s.setSwitchPadding(ui.dp(12));s.setPadding(0,ui.dp(8),0,ui.dp(8)); }
     private LinearLayout section(String title,String subtitle) {
